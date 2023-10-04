@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,6 +22,10 @@ public class HabilidadesModel {
 
     @Column
     private String nivel;
+
+    @ManyToOne
+    @JoinColumn(name="id_user")
+    UserModel user;
 
     public Long getIdHabilidad(){
         return idHabilidad;
@@ -43,6 +49,14 @@ public class HabilidadesModel {
 
     public void setNivel(String nivel){
         this.nivel=nivel;
+    }
+
+    public UserModel getUsers(){
+        return user;
+    }
+
+    public void setUsers(UserModel user){
+        this.user=user;
     }
 
 

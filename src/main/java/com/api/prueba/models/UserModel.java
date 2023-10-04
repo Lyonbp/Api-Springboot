@@ -2,6 +2,8 @@ package com.api.prueba.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
@@ -27,6 +29,10 @@ public class UserModel {
     
     @Column
     private String contact;
+
+    @ManyToOne
+    @JoinColumn(name="id_habilidades")
+    HabilidadesModel habilidades;
     
     public Long getId(){
         return id;
@@ -66,5 +72,13 @@ public class UserModel {
     
     public void setContact(String contact){
         this.contact=contact;
+    }
+
+    public HabilidadesModel getHabilidades(){
+        return habilidades;
+    }
+
+    public void setHabilidades(HabilidadesModel habilidades){
+        this.habilidades=habilidades;
     }
 }
